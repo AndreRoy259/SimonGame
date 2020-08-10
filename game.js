@@ -4,6 +4,7 @@ let gamePattern = [];
 let userClickedPattern = [];
 let level = 0;
 let started = false;
+let highScore = 0;
 
 //! FUNCTIONS
 function nextSequence() {
@@ -46,6 +47,10 @@ function checkAnswer(currentLevel) {
       $("body").removeClass("game-over");
     }, 200);
     $("#level-title").text("Game Over, Press Any Key to Restart");
+    if (level > highScore) {
+      highScore = level - 1;
+      $("#high-score").text(`High Score: ${highScore}`);
+    }
     startOver();
   }
 }
